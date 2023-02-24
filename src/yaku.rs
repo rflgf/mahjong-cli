@@ -1,13 +1,14 @@
 use std::fmt::Display;
 
-use crate::tile::{Wind, Dragon};
+use crate::tile::{Dragon, Wind};
 
+#[derive(PartialEq, Eq, Clone, Copy, PartialOrd, Ord)]
 pub enum Yaku {
     // 1-han
     Riichi,
     AllSimples,
     FullyConcealedHand,
-    SeatWind,
+    SeatWind(Wind),
     PrevalentWind(Wind),
     Dragons(Dragon),
     Pinfu,
@@ -82,7 +83,16 @@ impl Display for Yaku {
             Yaku::Riichi => write!(f, "Riichi"),
             Yaku::AllSimples => write!(f, "All simples"),
             Yaku::FullyConcealedHand => write!(f, "Fully concealed hand"),
-            Yaku::SeatWind => write!(f, "Seat wind"),
+            Yaku::SeatWind(wind) => write!(
+                f,
+                "Seat wind: {}",
+                match wind {
+                    Wind::East => "East Wind",
+                    Wind::South => "South Wind",
+                    Wind::West => "West Wind",
+                    Wind::North => "North Wind",
+                }
+            ),
             Yaku::PrevalentWind(wind) => write!(
                 f,
                 "Prevalent wind: {}",
@@ -116,16 +126,22 @@ impl Display for Yaku {
             Yaku::TripleTriplets => write!(f, "Triple triplets"),
             Yaku::ThreeQuads => write!(f, "Three Quads"),
             Yaku::AllTriplets => write!(f, "All triplets"),
-            Yaku::ThreeConcealedTriplets => write!(f, "Three concealed triplets"),
+            Yaku::ThreeConcealedTriplets => {
+                write!(f, "Three concealed triplets")
+            }
             Yaku::LittleThreeDragons => write!(f, "Little three dragons"),
-            Yaku::AllTerminalsAndHonors => write!(f, "All terminals and honors"),
+            Yaku::AllTerminalsAndHonors => {
+                write!(f, "All terminals and honors")
+            }
             Yaku::SevenPairs => write!(f, "Seven pairs"),
             Yaku::HalfOutsideHand => write!(f, "Half outside hand"),
             Yaku::PureStraight => write!(f, "Pure straight"),
             Yaku::MixedTripleSequence => write!(f, "Mixed triple sequence"),
             Yaku::Uumensai => write!(f, "Uumensai"),
             Yaku::ThreeChainedTriplets => write!(f, "Three chained triplets"),
-            Yaku::TwicePureDoubleSequence => write!(f, "Twice pure double sequence"),
+            Yaku::TwicePureDoubleSequence => {
+                write!(f, "Twice pure double sequence")
+            }
             Yaku::FullyOutsideHand => write!(f, "Fully outside hand"),
             Yaku::HalfFlush => write!(f, "Half flush"),
             Yaku::PureTripleChow => write!(f, "Pure triple Chow"),
@@ -152,7 +168,9 @@ impl Display for Yaku {
             Yaku::SingleWaitFourConcealedTriplets => {
                 write!(f, "Single wait four concealed triplets")
             }
-            Yaku::ThirteenWaitThirteenOrphans => write!(f, "Thirteen wait thirteen orphans"),
+            Yaku::ThirteenWaitThirteenOrphans => {
+                write!(f, "Thirteen wait thirteen orphans")
+            }
             Yaku::TrueNineGates => write!(f, "True nine gates"),
             Yaku::FourBigWinds => write!(f, "Four big winds"),
             Yaku::BigSevenStars => write!(f, "Big seven stars"),

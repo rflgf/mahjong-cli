@@ -1,6 +1,9 @@
 use std::io;
 
-use crate::{player::Player, tile::{Tile, Wind}};
+use crate::{
+    player::Player,
+    tile::{Dragon, Tile, Wind},
+};
 
 pub mod player;
 pub mod tile;
@@ -31,9 +34,21 @@ fn main() {
                         Tile::Wind(Wind::East),
                         Tile::Wind(Wind::East),
                         Tile::Wind(Wind::East),
+                        Tile::Wind(Wind::West),
+                        Tile::Wind(Wind::West),
+                        Tile::Wind(Wind::West),
+                        Tile::Wind(Wind::North),
+                        Tile::Wind(Wind::North),
+                        Tile::Wind(Wind::North),
+                        Tile::Wind(Wind::South),
+                        Tile::Wind(Wind::South),
+                        Tile::Wind(Wind::South),
+                        Tile::Dragon(Dragon::Green),
+                        Tile::Dragon(Dragon::Green),
                     ],
                     dealt_in: vec![],
                     discarded: vec![],
+                    kan: vec![],
                     riichi: false,
                 };
 

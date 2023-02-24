@@ -1,19 +1,19 @@
-use std::{fmt::Display};
+use std::fmt::Display;
 
-#[derive(PartialEq, Clone, Copy)]
+#[derive(PartialEq, Eq, Clone, Copy, PartialOrd, Ord)]
 pub enum Dragon {
     Green,
     Red,
     White,
 }
 
-#[derive(PartialEq, Clone, Copy)]
+#[derive(PartialEq, Eq, Clone, Copy, PartialOrd, Ord)]
 pub enum Simple {
     Man(u8),
     Pin(u8),
     Sou(u8),
 }
-#[derive(PartialEq, Clone, Copy)]
+#[derive(PartialEq, Eq, Clone, Copy, PartialOrd, Ord)]
 pub enum Wind {
     East,
     South,
@@ -21,7 +21,7 @@ pub enum Wind {
     North,
 }
 
-#[derive(PartialEq, Clone, Copy)]
+#[derive(PartialEq, Eq, Clone, Copy, PartialOrd, Ord)]
 pub enum Tile {
     Dragon(Dragon),
     Simple(Simple),
